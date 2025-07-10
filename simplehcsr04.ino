@@ -1,0 +1,50 @@
+/*
+  Simple HC-SR04 Ultrasonic Sensor Test
+
+  This Arduino sketch sends a trigger pulse to the HC-SR04 sensor,
+  waits a fixed interval (1 millisecond), then reads the echo pin.
+  
+  If echo is HIGH after 1ms, it means the object is far.
+  If echo is LOW after 1ms, it means the object is near.
+
+  This is a simplified version that does NOT measure
+  the duration of the echo signal, just its state after a delay.
+  
+  Connections:
+  - trigPin -> Pin 9
+  - echoPin -> Pin 10
+  - Onboard LED -> Pin 13 (LED lights up if object is far)
+*/
+
+const int trigPin = 9;
+const int echoPin = 10;
+const int ledPin = 13;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Send trigger pulse
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Wait 1 millisecond
+  delay(1);
+
+
+  if (digitalRead(echoPin) == HIGH) {
+    digitalWrite(ledPin, HIGH); // Object is far
+    Serial.println("Object is far");
+  } else {
+    digitalWrite(ledPin, LOW);  // Object is near
+    Serial.println("Object is near");
+  }
+
+  delay(100); // Pause before next trigger
+}
