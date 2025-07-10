@@ -16,15 +16,14 @@
   - Onboard LED -> Pin 13 (LED lights up if object is far)
 */
 
-const int trigPin = 9;
-const int echoPin = 10;
+const int trigPin = 8;
+const int echoPin = 9;
 const int ledPin = 13;
 
 void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, LOW);
 }
 
 void loop() {
@@ -49,3 +48,4 @@ delay(1);
 
   delay(100); // Pause before next trigger
 }
+
