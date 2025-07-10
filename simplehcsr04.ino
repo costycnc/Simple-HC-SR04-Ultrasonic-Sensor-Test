@@ -25,7 +25,6 @@ void setup() {
   pinMode(echoPin, INPUT);
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
-  Serial.begin(9600);
 }
 
 void loop() {
@@ -34,16 +33,18 @@ void loop() {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  // Wait 1 millisecond
-  delay(1);
+// Wait 1 millisecond before reading echo
+// Changing this value modifies the distance threshold:
+// 1 ms ≈ 10 cm (measured, approximate)
+// 2 ms ≈ 30 cm (measured, approximate)
+delay(1);
+
 
 
   if (digitalRead(echoPin) == HIGH) {
     digitalWrite(ledPin, HIGH); // Object is far
-    Serial.println("Object is far");
   } else {
     digitalWrite(ledPin, LOW);  // Object is near
-    Serial.println("Object is near");
   }
 
   delay(100); // Pause before next trigger
