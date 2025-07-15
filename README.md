@@ -2,6 +2,10 @@
 
 ## Description
 
+video https://www.youtube.com/shorts/KtlPhS5CgYE
+
+test now https://costycnc.github.io/avr-compiler-js#echo
+
 This simple Arduino sketch uses the HC-SR04 ultrasonic sensor to determine if an object is **near** or **far** based on a fixed-interval test of the echo pin state.
 
 It does **NOT measure the duration** of the echo signal like typical examples using `pulseIn()`. Instead, it:
